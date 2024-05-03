@@ -1,0 +1,41 @@
+{% load static %}
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- Author: {{ main_user.first_name }} {{ main_user.last_name }} -->
+    <!-- Title: {{ main_user.first_name }} {{ main_user.last_name }} | {{ main_user_info.profile_name }} -->
+    <!-- Description: {{ main_user_info.bio }} -->
+    <!-- Image: {% static 'image/'|add:main_user_info.profile_image %} -->
+    <!-- Locale: en_US -->
+
+    <!-- Primary Meta Tags -->
+    <title> {% block title %}
+    	{{ main_user.first_name }} {{ main_user.last_name }} | {{ main_user_info.profile_name }}
+    {% endblock %} </title>
+    <meta name="title" content="{{ main_user.first_name }} {{ main_user.last_name }} | {{ main_user_info.profile_name }}" />
+    <meta name="author" content="{{ main_user.first_name }} {{ main_user.last_name }}" />
+    <meta name="description" content="{{ main_user_info.bio }}"/>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{ main_user.first_name }} {{ main_user.last_name }}" />
+    <meta property="og:title" content="{{ main_user.first_name }} {{ main_user.last_name }} | {{ main_user_info.profile_name }}"/>
+    <meta property="og:description" content="{{ main_user_info.bio }}" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="{% static 'image/'|add:main_user_info.profile_image %}" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:author" content="{{ main_user.first_name }} {{ main_user.last_name }}" />
+    <meta property="twitter:title" content="{{ main_user.first_name }} {{ main_user.last_name }} | {{ main_user_info.profile_name }}" />
+    <meta property="twitter:description" content="{{ main_user_info.bio }}" />
+    <meta name="twitter:image:src" content="{% static 'image/'|add:main_user_info.profile_image %}"/>
+    <link href="{% static 'css/main.min.css' %}" rel="stylesheet">
+</head>
+<body class="d-flex h-100 text-start bg-dark">
+{% block content %}{% endblock %}
+</body>
+</html>

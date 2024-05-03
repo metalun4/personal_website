@@ -1,0 +1,39 @@
+@import "bootstrap/scss/bootstrap";
+
+body, a {
+  color: whitesmoke;
+}
+
+h4, p {
+  margin: 0;
+  padding: map-get($spacers, 2);
+}
+
+svg {
+  fill: whitesmoke;
+}
+
+.bg-white {
+  background-color:  whitesmoke !important;
+}
+
+.list-group {
+  background-color: inherit;
+}
+
+.list-group-item {
+  background-color: inherit;
+  border-style: hidden;
+  padding: 0;
+  color: inherit;
+}
+
+.badge {
+  font-size: inherit;
+  margin: map-get($spacers, 1);
+}
+
+.pp-img {
+  height: 158px;
+  width: 158px;
+}

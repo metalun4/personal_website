@@ -1,0 +1,42 @@
+{% extends 'shared/layout.html' %}
+{% load static %}
+{% block content %}
+	<div class="container py-5 mx-auto d-flex flex-column">
+        <main class="row m-5 fw-semibold">
+            <div class="col-12 col-lg-4 my-5 align-self-center">
+                <img src="{% static 'image/'|add:main_user_info.profile_image %}" class="rounded pp-img my-2" alt="PP">
+                <h1 class="d-inline-flex m-0 pb-2 border-bottom">{{ main_user.first_name }} {{ main_user.last_name }}</h1>
+                {% if main_user_info.location %}
+                	<div class="d-flex my-2">{% include 'icons/location_on_white_24dp.svg' %}{{ main_user_info.location }}</div>
+                {% endif %} 
+                <div class="d-flex my-2">{% include 'icons/email_white_24dp.svg' %}<a class="text-decoration-none" href="mailto:{{ main_user.email }}">{{ main_user.email }}</a></div>
+                <div class="d-flex flex-row my-3">
+                    {% for social in main_user_socials %}
+                        <a class="me-4" href="{{ social.url }}?utm_source=aydemir.website" target="_blank">{% include 'icons/'|add:social.social_info.social_image %}</a>
+                    {% endfor %}
+                    <a class="me-4" href="{% static 'resume/BarisAydemirResume.pdf' %}" target="_blank">{% include 'icons/picture_as_pdf_white_36dp.svg' %}</a>
+                </div>
+            </div>
+            <div class="col-12 col-lg-8 border-start border-4">
+                <div class="flex-row m-2 m-lg-5">
+                  <h4 class="border-bottom">Summary</h4>
+                  <p class="ps-lg-4">{{ main_user_info.bio }}</p>
+                </div>
+                <div class="flex-row m-2 m-lg-5">
+                  <h4 class="border-bottom">Skills</h4>
+                  <div class="m-2 ps-lg-4 text-center">
+                      {% for skill in main_user_skills %}
+                      	<span class="badge bg-white text-dark">{{ skill.name }}</span>
+                      {% empty %}
+                      	
+                      {% endfor %}
+                  </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="row mt-auto text-white-50 text-center">
+            <p>&copy; {% now 'Y' %} Baris Aydemir - Find the code on <a href="https://github.com/metalun4/website">GitHub</a></p>
+        </footer>
+    </div>
+{% endblock %}
